@@ -34,7 +34,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="93" id="DCM-YG-a3v">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemTableViewCell" rowHeight="93" id="DCM-YG-a3v" customClass="ItemTableViewCell" customModule="SportsStore" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="93"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DCM-YG-a3v" id="hzP-NP-KO1">
@@ -87,8 +87,17 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="l4k-Uz-t5E" id="Y6e-Gl-mxT"/>
+                                            <outlet property="nameLabel" destination="h36-wS-wo1" id="pLo-NW-rBe"/>
+                                            <outlet property="stockField" destination="QBf-iL-BJZ" id="mWW-MY-8rg"/>
+                                            <outlet property="stockStepper" destination="yQ8-jt-cje" id="oLp-Jh-iC1"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="mA3-Fb-0hW"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <animations/>
@@ -104,6 +113,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="tableView" destination="poj-eP-Lrs" id="7F2-KW-rYQ"/>
                         <outlet property="totalStockLabel" destination="21f-6R-SJb" id="gxR-5z-Fo3"/>
                     </connections>
                 </viewController>

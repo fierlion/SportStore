@@ -8,11 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource {
     //MARK: Properties
-    
     @IBOutlet weak var totalStockLabel: UILabel!
-    
+    @IBOutlet weak var tableView: UITableView!
     
     var products = [
         ("Kayak", "a boat for one person", "watersports", 275.0, 10),
@@ -23,6 +22,25 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         displayStockTotal()
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return products.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let product = products[indexPath.row]
+        let cellIdentifier = "ItemTableViewCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ItemTableViewCell
+        cell.nameLabel.text = product.0
+        cell.descriptionLabel.text = product.1
+        cell.stockStepper.value = Double(product.4)
+        cell.stockField.text = String(product.4)
+        return cell
     }
 
     override func didReceiveMemoryWarning() {
