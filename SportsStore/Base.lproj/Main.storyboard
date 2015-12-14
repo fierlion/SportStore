@@ -41,15 +41,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="92.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QBf-iL-BJZ" userLabel="Text Field">
-                                                    <rect key="frame" x="495" y="8" width="97" height="30"/>
-                                                    <animations/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="97" id="eUX-Nj-ELS"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4k-Uz-t5E" userLabel="Description Label">
                                                     <rect key="frame" x="35" y="63" width="557" height="21"/>
                                                     <animations/>
@@ -60,6 +51,9 @@
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="yQ8-jt-cje">
                                                     <rect key="frame" x="393" y="9" width="94" height="29"/>
                                                     <animations/>
+                                                    <connections>
+                                                        <action selector="stockLevelDidChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="FAH-zw-8ke"/>
+                                                    </connections>
                                                 </stepper>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h36-wS-wo1" userLabel="Name Label">
                                                     <rect key="frame" x="35" y="9" width="350" height="46"/>
@@ -71,6 +65,18 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QBf-iL-BJZ" userLabel="Text Field">
+                                                    <rect key="frame" x="495" y="8" width="97" height="30"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="97" id="eUX-Nj-ELS"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="stockLevelDidChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="J36-Nk-eDd"/>
+                                                    </connections>
+                                                </textField>
                                             </subviews>
                                             <animations/>
                                             <constraints>

@@ -17,6 +17,8 @@ class ItemTableViewCell: UITableViewCell {
     @IBOutlet weak var stockStepper: UIStepper!
     @IBOutlet weak var stockField: UITextField!
     
+    var productId:Int?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

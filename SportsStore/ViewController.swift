@@ -36,6 +36,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         let product = products[indexPath.row]
         let cellIdentifier = "ItemTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ItemTableViewCell
+        cell.productId = indexPath.row
         cell.nameLabel.text = product.0
         cell.descriptionLabel.text = product.1
         cell.stockStepper.value = Double(product.4)
@@ -48,6 +49,38 @@ class ViewController: UIViewController, UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func stockLevelDidChange(sender: AnyObject) {
+        if var currentCell = sender as? UIView {
+            while (true) {
+                currentCell = currentCell.superview!
+                if let cell = currentCell as? ItemTableViewCell {
+                    let currentId = cell.productId
+                    if currentId >= 0 {
+                        var newStockLevel:Int?
+                        
+                        if let stepper = sender as? UIStepper {
+                            newStockLevel = Int(stepper.value)
+                        }
+                        else if let textField = sender as? UITextField {
+                            if let newValue = Int(textField.text!) {
+                                newStockLevel = newValue
+                            }
+                        }
+                        
+                        if let level = newStockLevel {
+                            if currentId >= 0 {
+                                products[currentId!].4 = level
+                            }
+                            cell.stockStepper.value = Double(level)
+                            cell.stockField.text = String(level)
+                        }
+                    }
+                    break
+                }
+            }
+            displayStockTotal()
+        }
+    }
     func displayStockTotal() {
         let stockTotal = products.reduce(0, combine: {(total, product) -> Int in return total + product.4})
         totalStockLabel.text = "\(stockTotal) Products in stock"
