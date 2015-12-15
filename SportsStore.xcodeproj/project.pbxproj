@@ -15,6 +15,8 @@
 		71D8F91C1C1E5F5E00EBFEE8 /* SportsStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8F91B1C1E5F5E00EBFEE8 /* SportsStoreTests.swift */; };
 		71D8F9271C1E5F5E00EBFEE8 /* SportsStoreUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8F9261C1E5F5E00EBFEE8 /* SportsStoreUITests.swift */; };
 		71D8F9391C1E74DE00EBFEE8 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8F9381C1E74DE00EBFEE8 /* ItemTableViewCell.swift */; };
+		71D8F9501C1F992800EBFEE8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8F94F1C1F992800EBFEE8 /* Utils.swift */; };
+		71D8F9521C1F9A2400EBFEE8 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D8F9511C1F9A2400EBFEE8 /* Product.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		71D8F9261C1E5F5E00EBFEE8 /* SportsStoreUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsStoreUITests.swift; sourceTree = "<group>"; };
 		71D8F9281C1E5F5E00EBFEE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		71D8F9381C1E74DE00EBFEE8 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		71D8F94F1C1F992800EBFEE8 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		71D8F9511C1F9A2400EBFEE8 /* Product.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				71D8F90D1C1E5F5E00EBFEE8 /* Assets.xcassets */,
 				71D8F90F1C1E5F5E00EBFEE8 /* LaunchScreen.storyboard */,
 				71D8F9121C1E5F5E00EBFEE8 /* Info.plist */,
+				71D8F94F1C1F992800EBFEE8 /* Utils.swift */,
+				71D8F9511C1F9A2400EBFEE8 /* Product.swift */,
 			);
 			path = SportsStore;
 			sourceTree = "<group>";
@@ -261,7 +267,9 @@
 			files = (
 				71D8F9091C1E5F5E00EBFEE8 /* ViewController.swift in Sources */,
 				71D8F9391C1E74DE00EBFEE8 /* ItemTableViewCell.swift in Sources */,
+				71D8F9521C1F9A2400EBFEE8 /* Product.swift in Sources */,
 				71D8F9071C1E5F5E00EBFEE8 /* AppDelegate.swift in Sources */,
+				71D8F9501C1F992800EBFEE8 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
