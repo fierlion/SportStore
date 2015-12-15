@@ -13,6 +13,9 @@ class ViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var totalStockLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    let logger = Logger<Product>(callback: { (p:Product) in
+        print("Change: \(p.name) \(p.stockLevel) items in stock")})
+    
     var products = [
         Product(name:"Kayak", description:"a boat for one person", category:"watersports", price:275.0, stockLevel:10),
         Product(name:"Soccer Ball", description:"fifa approved size and weight", category:"soccer", price:19.5, stockLevel:32),
@@ -38,7 +41,7 @@ class ViewController: UIViewController, UITableViewDataSource {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ItemTableViewCell
         cell.product = products[indexPath.row]
         cell.nameLabel.text = product.name
-        cell.descriptionLabel.text = product.description
+        cell.descriptionLabel.text = product.productDescription
         cell.stockStepper.value = Double(product.stockLevel)
         cell.stockField.text = String(product.stockLevel)
         return cell
@@ -65,6 +68,7 @@ class ViewController: UIViewController, UITableViewDataSource {
                         }
                         cell.stockStepper.value = Double(product.stockLevel)
                         cell.stockField.text = String(product.stockLevel)
+                        logger.logItem(product)
                     }
                     break
                 }
