@@ -20,7 +20,7 @@ class NetworkConnection {
             return result
         }
         else {
-            return 0
+            return -1
         }
     }
 

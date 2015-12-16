@@ -12,16 +12,23 @@ class ViewController: UIViewController, UITableViewDataSource {
     //MARK: Properties
     @IBOutlet weak var totalStockLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
-    var products = [
-        Product(name:"Kayak", description:"a boat for one person", category:"watersports", price:275.0, stockLevel:10),
-        Product(name:"Soccer Ball", description:"fifa approved size and weight", category:"soccer", price:19.5, stockLevel:32),
-        Product(name:"stadium", description:"35000 seat stadium", category:"soccer", price:79500.0, stockLevel:4),
-    ]
+    var productStore = ProductDataStore()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         displayStockTotal()
+        
+        productStore.callback = {(p:Product) in
+            for cell in self.tableView.visibleCells {
+                if let pcell = cell as? ItemTableViewCell {
+                    if pcell.product?.name == p.name {
+                        pcell.stockStepper.value = Double(p.stockLevel)
+                        pcell.stockField.text = String(p.stockLevel)
+                    }
+                }
+            }
+            self.displayStockTotal()
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -29,14 +36,14 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return products.count
+        return productStore.products.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let product = products[indexPath.row]
+        let product = productStore.products[indexPath.row]
         let cellIdentifier = "ItemTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! ItemTableViewCell
-        cell.product = products[indexPath.row]
+        cell.product = product
         cell.nameLabel.text = product.name
         cell.descriptionLabel.text = product.productDescription
         cell.stockStepper.value = Double(product.stockLevel)
@@ -74,7 +81,14 @@ class ViewController: UIViewController, UITableViewDataSource {
         }
     }
     func displayStockTotal() {
-        let stockTotal = products.reduce(0, combine: {(total, product) -> Int in return total + product.stockLevel})
-        totalStockLabel.text = "\(stockTotal) Products in stock"
+        let finalTotals:(Int,Double) = productStore.products.reduce((0, 0.0),
+            combine: {(totals, product) -> (Int, Double) in
+                return (
+                    totals.0 + product.stockLevel,
+                    totals.1 + product.stockValue
+                )
+            })
+        
+        totalStockLabel.text = "\(finalTotals.0) Products in stock"
     }
 }
